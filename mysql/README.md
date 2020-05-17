@@ -325,3 +325,19 @@ mysql> quit or exit #退出
 > insert into db1.test_set values("bob", "eat,music");
 ```
 
+## 约束条件
+
+### 查看约束条件
+
+```shell
+> desc 库名.表名;
+字段名|类型|空|键值|默认值|额外设置|
+```
+
+### 设置约束条件
+
+-   null	允许为空（默认设置）
+-   not null    不允许为空
+-   key   键值类型
+-   default   设置默认值，缺省为NULL
+-   extra    额外设置
