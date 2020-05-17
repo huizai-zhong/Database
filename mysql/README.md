@@ -307,6 +307,8 @@ mysql> quit or exit #退出
     name char(5),
     sex	enum("boy", "girl", "no")
 );
+
+> insert into db1.test_enum values("bob","boy");
 ```
 
 -   **set 多选**
@@ -319,5 +321,7 @@ mysql> quit or exit #退出
     name char(5),
     likes set("eat", "game", "music", "money")
 );
+
+> insert into db1.test_set values("bob", "eat,music");
 ```
 
