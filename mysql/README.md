@@ -327,17 +327,88 @@ mysql> quit or exit #退出
 
 ## 约束条件
 
-### 查看约束条件
+### 1. 查看约束条件
 
 ```shell
 > desc 库名.表名;
 字段名|类型|空|键值|默认值|额外设置|
 ```
 
-### 设置约束条件
+### 2. 设置约束条件
 
 -   null	允许为空（默认设置）
 -   not null    不允许为空
 -   key   键值类型
 -   default   设置默认值，缺省为NULL
 -   extra    额外设置
+
+## 修改表结构
+
+### 1.语法结构
+
+```shell
+mysql>alter table 库名.表名 执行动作;
+执行动作：
+	add 添加字段
+	modify 修改字段类型
+	change 修改字段名
+	drop 删除字段
+	rename 修改表名
+```
+
+### 2.添加新字段
+
+-   用法
+    -   新字段默认添加到字段末尾
+
+```shell
+mysql> alter table db1.t2
+	-> add
+	-> name char(15) first;
+```
+
+### 3.修改字段类型
+
+-   用法
+    -   修改字段类型不能与已存储的数据冲突
+
+```shell
+mysql> alter table 库名.表名
+	 > modify 字段类型 类型(宽度) 约束条件
+	 > [after 字段名 | first]
+```
+
+### 4.修改字段名称
+
+-   基本用法
+    -   也可以用来修改字段类型
+
+```shell
+mysql> alter table 库名.表名
+	   change 源字段名	新字段名	类型(宽度)
+	   约束条件;   --当更新类型和约束条件时，可修改字段类型
+```
+
+### 5.删除字段
+
+-   基本用法
+    -   表中有多条记录时，所有列的此字段值都会被删除
+
+```shell
+mysql> alter table db1.t2 drop user_num, drop pay;
+```
+
+### 6.修改表名
+
+-   基本用法
+    -   表对应的文件名，也被改变
+    -   表记录不受影响
+
+```sql
+mysql> alter table t2 rename school;
+```
+
+## 键值概述
+
+
+
